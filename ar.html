@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مدرب حياة - الصفحة الرئيسية</title>
+
+  <style>
+    @font-face {
+      font-family: 'Loverine';
+      src: url('fonts/loverine.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+    }
+
+    .background {
+      background-image: url("Nature-Wallpaper-99.jpg");
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .navbar {
+      background-color: #096b09;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      direction: rtl;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-left: 10px;
+    }
+
+    .main-content {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 20px;
+      gap: 20px;
+      direction: rtl;
+    }
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .main-button {
+      background-color: white;
+      color: black;
+      padding: 15px 20px;
+      font-size: 1.1em;
+      border: 2px solid #096b09;
+      border-radius: 25px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      width: 180px;
+    }
+
+    .main-button:hover {
+      background-color: #eafbe9;
+    }
+
+    .info-box {
+      background-color: white;
+      flex: 1;
+      min-width: 280px;
+      max-width: 700px;
+      border-radius: 25px;
+      border: 4px solid #096b09;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 20px;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow-y: auto;
+      text-align: right;
+    }
+
+    .info-box.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .info-box h2 {
+      margin-bottom: 10px;
+      color: #096b09;
+      font-size: 1.8em;
+    }
+
+    .certification-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .main-button {
+        width: 140px;
+        font-size: 1em;
+      }
+
+      .info-box {
+        width: 90%;
+        max-height: 60vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-button {
+        width: 120px;
+        padding: 10px 15px;
+        font-size: 0.95em;
+      }
+
+      .info-box {
+        padding: 15px;
+        max-height: 60vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <!-- الشريط العلوي -->
+  <div class="navbar">
+    <img src="logo1.png" alt="الشعار" class="logo" />
+    <div class="nav-links">
+      <a href="#">الرئيسية</a>
+      <a href="about ar.html">من نحن</a>
+      <a href="contact us ar.html">اتصل بنا</a>
+    </div>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="main-content">
+
+    <!-- قائمة الأزرار -->
+    <div class="button-list">
+      <button class="main-button" onclick="showContent('coach')">مدرب حياة معتمد</button>
+      <button class="main-button" onclick="showContent('services')">الخدمات المقدمة</button>
+      <button class="main-button" onclick="showContent('languages')">اللغات المتحدث بها</button>
+      <button class="main-button" onclick="showContent('testimonials')">آراء العملاء</button>
+    </div>
+
+    <!-- صندوق المعلومات -->
+    <div id="info-box" class="info-box">
+      <h2 id="info-title">العنوان</h2>
+      <div id="info-content"></div>
+    </div>
+
+  </div>
+
+  <!-- السكربت -->
+  <script>
+    const contentData = {
+      coach: {
+        title: "مدرب حياة معتمد",
+        content: `
+          <img src="cer.jpg" alt="شهادة اعتماد" class="certification-img" />
+        `
+      },
+      services: {
+        title: "الخدمات المقدمة",
+        content: `
+          <ul>
+            <li>جلسات تدريب فردية</li>
+            <li>ورش عمل وتدريبات جماعية</li>
+            <li>جلسات تدريب عبر الإنترنت</li>
+            <li>تدريب على اليقظة والرفاهية</li>
+          </ul>
+        `
+      },
+      languages: {
+        title: "اللغات المتحدث بها",
+        content: "نتحدث العربية، الإنجليزية، والفرنسية لضمان تقديم خدمة مريحة ومتاحة للجميع."
+      },
+      testimonials: {
+        title: "آراء العملاء",
+        content: `
+          <ul>
+            <li>“هذا التدريب غير حياتي!” – سارة</li>
+            <li>“محترف جدًا ومتفاهم.” – أحمد</li>
+            <li>“أشعر بالثقة والتركيز.” – ماري</li>
+            <li>“جلسات مفيدة ساعدتني على الوضوح.” – جون</li>
+            <li>“الإرشادات كانت فعالة وعملية.” – بترا</li>
+            <li>“أنصح بهذا المدرب بشدة.” – ماركوس</li>
+            <li>“دعم وتحفيز طوال العملية.” – ليندا</li>
+            <li>“ساعدني في التغلب على مخاوفي ووضع أهداف واضحة.” – فاطمة</li>
+            <li>“تجربة غيرت حياتي وزادت من ثقتي.” – كارلوس</li>
+            <li>“كل جلسة كانت مصممة خصيصًا لاحتياجاتي.” – إيميلي</li>
+          </ul>
+        `
+      }
+    };
+
+    function showContent(key) {
+      const box = document.getElementById("info-box");
+      const title = document.getElementById("info-title");
+      const content = document.getElementById("info-content");
+
+      title.textContent = contentData[key].title;
+      content.innerHTML = contentData[key].content;
+
+      box.classList.add("active");
+    }
+  </script>
+
+</body>
+</html>

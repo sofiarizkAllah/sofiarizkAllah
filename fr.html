@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coach de Vie - Accueil</title>
+
+  <style>
+    @font-face {
+      font-family: 'Loverine';
+      src: url('fonts/loverine.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+    }
+
+    .background {
+      background-image: url("Nature-Wallpaper-99.jpg");
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .navbar {
+      background-color: #096b09;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 10px;
+    }
+
+    .main-content {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .main-button {
+      background-color: white;
+      color: black;
+      padding: 15px 20px;
+      font-size: 1.1em;
+      border: 2px solid #096b09;
+      border-radius: 25px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      width: 180px;
+    }
+
+    .main-button:hover {
+      background-color: #eafbe9;
+    }
+
+    .info-box {
+      background-color: white;
+      flex: 1;
+      min-width: 280px;
+      max-width: 700px;
+      border-radius: 25px;
+      border: 4px solid #096b09;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 20px;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow-y: auto;
+    }
+
+    .info-box.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .info-box h2 {
+      margin-bottom: 10px;
+      color: #096b09;
+      font-size: 1.8em;
+    }
+
+    .certification-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .main-button {
+        width: 140px;
+        font-size: 1em;
+      }
+
+      .info-box {
+        width: 90%;
+        max-height: 60vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-button {
+        width: 120px;
+        padding: 10px 15px;
+        font-size: 0.95em;
+      }
+
+      .info-box {
+        padding: 15px;
+        max-height: 60vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <img src="logo1.png" alt="Logo" class="logo" />
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="about fr.html">À propos</a>
+      <a href="contact fr.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="main-content">
+
+    <!-- LISTE DE BOUTONS -->
+    <div class="button-list">
+      <button class="main-button" onclick="showContent('coach')">Coach de Vie Certifié</button>
+      <button class="main-button" onclick="showContent('services')">Services Offerts</button>
+      <button class="main-button" onclick="showContent('languages')">Langues Parlées</button>
+      <button class="main-button" onclick="showContent('testimonials')">Témoignages Clients</button>
+    </div>
+
+    <!-- BOÎTE D’INFORMATION -->
+    <div id="info-box" class="info-box">
+      <h2 id="info-title">Titre</h2>
+      <div id="info-content"></div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const contentData = {
+      coach: {
+        title: "Coach de Vie Certifié",
+        content: `
+          <img src="cer.jpg" alt="Badge de Certification" class="certification-img" />
+        `
+      },
+      services: {
+        title: "Services Offerts",
+        content: `
+          <ul>
+            <li>Coaching personnel individuel</li>
+            <li>Ateliers et formations en groupe</li>
+            <li>Séances de coaching en ligne</li>
+            <li>Formation en pleine conscience et bien-être</li>
+          </ul>
+        `
+      },
+      languages: {
+        title: "Langues Parlées",
+        content: "Nous parlons français, anglais et arabe afin d’assurer un service accessible et confortable pour tous."
+      },
+      testimonials: {
+        title: "Témoignages Clients",
+        content: `
+          <ul>
+            <li>« Ce coaching a changé ma vie ! » – Sarah</li>
+            <li>« Très professionnel et à l’écoute. » – Ahmed</li>
+            <li>« Je me sens confiante et concentrée. » – Marie</li>
+            <li>« Des séances enrichissantes qui m’ont apporté de la clarté. » – John</li>
+            <li>« Des conseils pratiques et efficaces. » – Petra</li>
+            <li>« Je recommande vivement ce coach. » – Marcus</li>
+            <li>« Soutien et motivation durant tout le processus. » – Linda</li>
+            <li>« M’a aidée à dépasser mes peurs et à me fixer des objectifs clairs. » – Fatima</li>
+            <li>« Une expérience transformative qui a boosté ma confiance. » – Carlos</li>
+            <li>« Chaque séance était adaptée à mes besoins personnels. » – Emily</li>
+          </ul>
+        `
+      }
+    };
+
+    function showContent(key) {
+      const box = document.getElementById("info-box");
+      const title = document.getElementById("info-title");
+      const content = document.getElementById("info-content");
+
+      title.textContent = contentData[key].title;
+      content.innerHTML = contentData[key].content;
+
+      box.classList.add("active");
+    }
+  </script>
+
+</body>
+</html>

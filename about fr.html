@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coach de Vie - Accueil</title>
+
+  <style>
+    @font-face {
+      font-family: 'Loverine';
+      src: url('fonts/loverine.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+    }
+
+    .background {
+      background-image: url("high-quality-pictures-1920-x-1200-d2ztffw36exthrke.jpg");
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .navbar {
+      background-color: #096b09;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 10px;
+    }
+
+    .main-content {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+      border: 4px solid #096b09;
+    }
+
+    .image-box {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 6px solid #127c21;
+      flex-shrink: 0;
+    }
+
+    .image-box img {
+      width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    .text-box {
+      max-width: 600px;
+      padding: 10px;
+    }
+
+    .text-box h1 {
+      color: #096b09;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    .text-box p {
+      font-size: 1.2em;
+      color: #146814;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-box img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .text-box {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Arrière-plan -->
+  <div class="background"></div>
+
+  <!-- Barre de navigation -->
+  <div class="navbar">
+    <img src="logo1.png" alt="Logo" class="logo" />
+    <div class="nav-links">
+      <a href="fr.html">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="contact fr.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <div class="container">
+      <div class="image-box">
+        <img src="WhatsApp Image 2025-06-06 at 12.32.48_573f3e3c.jpg" alt="Sofia RizkAllah" />
+      </div>
+      <div class="text-box">
+        <h1>À propos de moi</h1>
+        <p>
+          Je suis <strong>Sofia RizkAllah</strong>, coach de vie et thérapeute certifiée au niveau international. Je suis spécialisée dans l'accompagnement des personnes à travers la guérison, la croissance et la transformation personnelle. Avec une approche centrée sur le cœur et une compréhension profonde du bien-être émotionnel, j'aide mes clients à surmonter les traumatismes, à renforcer leur estime de soi et à créer une vie équilibrée et pleine de sens. Ma mission est d'aider chacun à se reconnecter à son vrai moi — car un changement durable commence de l’intérieur.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
